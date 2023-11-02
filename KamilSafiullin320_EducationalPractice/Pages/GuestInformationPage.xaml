@@ -13,13 +13,9 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -31,16 +27,14 @@
         <TextBlock Text="Дисциплина"
                    Grid.Row="0"
                    Grid.Column="1"
-                   Grid.ColumnSpan="3"
                    TextAlignment="Center"
                    VerticalAlignment="Center"
                    FontSize="20"
                    FontWeight="DemiBold"/>
 
         <ListView Grid.Column="1"
-                  Grid.ColumnSpan="3"
                   Grid.Row="2"
-                  Grid.RowSpan="4"
+                  Grid.RowSpan="3"
                   x:Name="GuestInfoLv"
                   ItemsSource="{Binding disciplines}">
             <ListView.View>
@@ -49,14 +43,14 @@
                         <GridViewColumn Header="Название">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Discipline.Name}"/>
+                                    <TextBlock Text="{Binding Name}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn Header="Объем">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Value}"/>
+                                    <TextBlock Text="{Binding Volume}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -66,10 +60,12 @@
         </ListView>
 
         <Button x:Name="GuestBackBtn"
-                Grid.Column="5"
-                Grid.Row="8"
-                Content="Вернуться назад"
+                Grid.Column="0"
+                Grid.Row="0"
                 FontSize="15"
-                Margin="10" Click="GuestBackBtn_Click"/>
+                Height="45"
+                Width="125" Click="GuestBackBtn_Click">
+            <Image Height="35" Width="75" Source="/Resources/Back.png"/>
+        </Button>
     </Grid>
 </Page>

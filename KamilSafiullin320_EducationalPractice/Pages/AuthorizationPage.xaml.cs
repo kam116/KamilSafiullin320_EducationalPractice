@@ -21,6 +21,7 @@ namespace KamilSafiullin320_EducationalPractice.Pages
     /// </summary>
     public partial class AuthorizationPage : Page
     {
+        public static List<Employee> employees { get; set; }
         public AuthorizationPage()
         {
             InitializeComponent();
@@ -34,7 +35,33 @@ namespace KamilSafiullin320_EducationalPractice.Pages
 
         private void EntranceBtn_Click(object sender, RoutedEventArgs e)
         {
+            string login = loginTb.Text.Trim();
+            string password = passwordPb.Password.Trim();
 
+            employees = new List<Employee>(DbConnection.Educational_Practice_320_KamilEntities.Employee.ToList());
+            Employee employee = employees.FirstOrDefault(i => i.Id_employee.ToString() == login && i.Id_employee.ToString() == password);
+
+            if (employee != null && employee.Post == "зав. кафедрой")
+            {
+                MessageBox.Show($"Вы входите как {employee.Surname} ({employee.Post})!");
+                NavigationService.Navigate(new DepartmentHeadInformationPage());
+            }
+            else if (employee != null && employee.Post == "преподаватель")
+            {
+                MessageBox.Show($"Вы входите как {employee.Surname} ({employee.Post})!");
+                NavigationService.Navigate(new TeacherInformationPage());
+            }
+            else if (employee != null && employee.Post == "инженер")
+            {
+                MessageBox.Show($"Вы входите как {employee.Surname} ({employee.Post})!");
+                NavigationService.Navigate(new EngineerInformationPage());
+            }
+            else
+            {
+                MessageBox.Show("Повторите попытку!");
+                loginTb.Text = string.Empty;
+                passwordPb.Password = string.Empty;
+            }
         }
     }
 }
