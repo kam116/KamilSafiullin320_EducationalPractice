@@ -17,24 +17,24 @@ using KamilSafiullin320_EducationalPractice.DB;
 namespace KamilSafiullin320_EducationalPractice.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для AuthorizationPage.xaml
+    /// Логика взаимодействия для GuestInformationPage.xaml
     /// </summary>
-    public partial class AuthorizationPage : Page
+    public partial class GuestInformationPage : Page
     {
-        public AuthorizationPage()
+        public static List<Discipline> disciplines {  get; set; }
+        public GuestInformationPage()
         {
             InitializeComponent();
+
+            disciplines = new List<Discipline>(DbConnection.Educational_Practice_320_KamilEntities.Discipline.ToList());
+            this.DataContext = this;
+
+            GuestInfoLv.ItemsSource = disciplines;
         }
 
-        private void GuestBtn_Click(object sender, RoutedEventArgs e)
+        private void GuestBackBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Вы входите как гость!");
-            NavigationService.Navigate(new GuestInformationPage());
-        }
-
-        private void EntranceBtn_Click(object sender, RoutedEventArgs e)
-        {
-
+            NavigationService.Navigate(new AuthorizationPage());
         }
     }
 }
