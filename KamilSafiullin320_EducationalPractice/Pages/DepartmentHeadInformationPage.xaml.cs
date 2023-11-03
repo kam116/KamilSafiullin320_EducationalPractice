@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KamilSafiullin320_EducationalPractice.DB;
 
 namespace KamilSafiullin320_EducationalPractice.Pages
 {
@@ -20,9 +21,29 @@ namespace KamilSafiullin320_EducationalPractice.Pages
     /// </summary>
     public partial class DepartmentHeadInformationPage : Page
     {
+        public static List<Department> departments { get; set; }
+
         public DepartmentHeadInformationPage()
         {
             InitializeComponent();
+
+            DepartmentHeadNameTb.Text = AuthorizationPage.employeeemp.Surname;
+
+            departments = new List<Department>(DbConnection.Educational_Practice_320_KamilEntities.Department.ToList());
+            this.DataContext = this;
+
+            DepartmentHeadInfoLv.ItemsSource = departments;
+        }
+
+        private void DepartmentHeadBackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AuthorizationPage());
+        }
+
+        private void DepartmentHeadAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Вы переходите на страницу взаимодействия с дисциплинами!");
+            NavigationService.Navigate(new DepartmentHeadAddPage());
         }
     }
 }

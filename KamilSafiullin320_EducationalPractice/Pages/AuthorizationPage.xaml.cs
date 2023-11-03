@@ -21,6 +21,7 @@ namespace KamilSafiullin320_EducationalPractice.Pages
     /// </summary>
     public partial class AuthorizationPage : Page
     {
+        public static Employee employeeemp;
         public static List<Employee> employees { get; set; }
         public AuthorizationPage()
         {
@@ -39,21 +40,21 @@ namespace KamilSafiullin320_EducationalPractice.Pages
             string password = passwordPb.Password.Trim();
 
             employees = new List<Employee>(DbConnection.Educational_Practice_320_KamilEntities.Employee.ToList());
-            Employee employee = employees.FirstOrDefault(i => i.Id_employee.ToString() == login && i.Id_employee.ToString() == password);
+            employeeemp = employees.FirstOrDefault(i => i.Id_employee.ToString() == login && i.Id_employee.ToString() == password);
 
-            if (employee != null && employee.Post == "зав. кафедрой")
+            if (employeeemp != null && employeeemp.Post == "зав. кафедрой")
             {
-                MessageBox.Show($"Вы входите как {employee.Surname} ({employee.Post})!");
+                MessageBox.Show($"Вы входите как {employeeemp.Surname} ({employeeemp.Post})!");
                 NavigationService.Navigate(new DepartmentHeadInformationPage());
             }
-            else if (employee != null && employee.Post == "преподаватель")
+            else if (employeeemp != null && employeeemp.Post == "преподаватель")
             {
-                MessageBox.Show($"Вы входите как {employee.Surname} ({employee.Post})!");
+                MessageBox.Show($"Вы входите как {employeeemp.Surname} ({employeeemp.Post})!");
                 NavigationService.Navigate(new TeacherInformationPage());
             }
-            else if (employee != null && employee.Post == "инженер")
+            else if (employeeemp != null && employeeemp.Post == "инженер")
             {
-                MessageBox.Show($"Вы входите как {employee.Surname} ({employee.Post})!");
+                MessageBox.Show($"Вы входите как {employeeemp.Surname} ({employeeemp.Post})!");
                 NavigationService.Navigate(new EngineerInformationPage());
             }
             else

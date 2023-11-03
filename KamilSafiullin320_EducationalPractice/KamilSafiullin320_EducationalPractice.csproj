@@ -154,7 +154,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\DepartmentHeadAddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\DepartmentHeadInformationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EngineerAddPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,13 +178,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\TeacherStudentInteractionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DepartmentHeadAddPage.xaml.cs">
+      <DependentUpon>DepartmentHeadAddPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DepartmentHeadInformationPage.xaml.cs">
       <DependentUpon>DepartmentHeadInformationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EngineerAddPage.xaml.cs">
+      <DependentUpon>EngineerAddPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EngineerInformationPage.xaml.cs">
       <DependentUpon>EngineerInformationPage.xaml</DependentUpon>
@@ -186,6 +204,9 @@
     </Compile>
     <Compile Include="Pages\TeacherInformationPage.xaml.cs">
       <DependentUpon>TeacherInformationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TeacherStudentInteractionPage.xaml.cs">
+      <DependentUpon>TeacherStudentInteractionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -232,6 +253,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Add.png" />
     <Resource Include="Resources\Back.png" />
   </ItemGroup>
   <ItemGroup>

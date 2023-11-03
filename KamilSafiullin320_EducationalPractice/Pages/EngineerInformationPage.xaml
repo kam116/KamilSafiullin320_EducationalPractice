@@ -9,6 +9,103 @@
       Title="EngineerInformationPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="EngineerNameTb"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   TextAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="20"
+                   FontWeight="DemiBold"/>
+
+        <ListView Grid.Column="1"
+                  Grid.ColumnSpan="2"
+                  Grid.Row="2"
+                  Grid.RowSpan="3"
+                  x:Name="EngineerInfoLv"
+                  ItemsSource="{Binding employees}">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Таб.№">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Id_employee}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Шифр">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Cipher}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Фамилия">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Surname}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Должность">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Post}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Зарплата">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Salary}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Шеф">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Id_chief}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button x:Name="EngineerBackBtn"
+                Grid.Column="0"
+                Grid.Row="0"
+                FontSize="15"
+                Height="45"
+                Width="125" Click="EngineerBackBtn_Click">
+            <Image Height="35" Width="75" Source="/Resources/Back.png"/>
+        </Button>
+
+        <Button x:Name="EngineerAddBtn"
+                Grid.Column="3"
+                Grid.Row="0"
+                FontSize="15"
+                Height="45"
+                Width="125" Click="EngineerAddBtn_Click">
+            <Image Height="35" Width="75" Source="/Resources/Add.png"/>
+        </Button>
     </Grid>
 </Page>

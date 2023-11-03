@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KamilSafiullin320_EducationalPractice.DB;
 
 namespace KamilSafiullin320_EducationalPractice.Pages
 {
@@ -20,9 +21,28 @@ namespace KamilSafiullin320_EducationalPractice.Pages
     /// </summary>
     public partial class EngineerInformationPage : Page
     {
+        public static List<Employee> employees { get; set; }
         public EngineerInformationPage()
         {
             InitializeComponent();
+
+            EngineerNameTb.Text = AuthorizationPage.employeeemp.Surname;
+
+            employees = new List<Employee>(DbConnection.Educational_Practice_320_KamilEntities.Employee.ToList());
+            this.DataContext = this;
+
+            EngineerInfoLv.ItemsSource = employees;
+        }
+
+        private void EngineerBackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AuthorizationPage());
+        }
+
+        private void EngineerAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Вы переходите на страницу взаимодействия с сотрудниками!");
+            NavigationService.Navigate(new EngineerAddPage());
         }
     }
 }
