@@ -23,6 +23,7 @@ namespace KamilSafiullin320_EducationalPractice.Pages
     {
         public static List<Exam> exams { get; set; }
         public static Employee employee1;
+        public static Exam exam;
         public TeacherInformationPage()
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace KamilSafiullin320_EducationalPractice.Pages
             exams = new List<Exam>(DbConnection.Educational_Practice_320_KamilEntities.Exam.ToList().Where(x => x.Id_employee == employee1.Id_employee));
             List<Exam> sourceExams = new List<Exam>();
 
-            for (int i = 1; i < exams.Count; i++)
+            for (int i = 0; i < exams.Count; i++)
             {
                 if (sourceExams.FirstOrDefault(x => x.Date == exams[i].Date && x.Id_discipline == exams[i].Id_discipline) == null)
                 {
@@ -44,7 +45,7 @@ namespace KamilSafiullin320_EducationalPractice.Pages
             
             this.DataContext = this;
 
-            TeacherInfoLv.ItemsSource = exams;
+            TeacherInfoLv.ItemsSource = sourceExams;
         }
 
         private void TeacherBackBtn_Click(object sender, RoutedEventArgs e)
@@ -54,8 +55,8 @@ namespace KamilSafiullin320_EducationalPractice.Pages
 
         private void TeacherInfoLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Exam exam = TeacherInfoLv.SelectedItem as Exam;
-            NavigationService.Navigate(new TeacherStudentInteractionPage(exam));
+            exam = TeacherInfoLv.SelectedItem as Exam;
+            NavigationService.Navigate(new TeacherStudentInteractionPage());
         }
     }
 }

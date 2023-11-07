@@ -28,7 +28,7 @@ namespace KamilSafiullin320_EducationalPractice.Pages
 
             DepartmentNameTb.Text = DepartmentHeadInformationPage.dep.Name;
 
-            disciplines = new List<Discipline>(DbConnection.Educational_Practice_320_KamilEntities.Discipline.ToList());
+            disciplines = new List<Discipline>(DbConnection.Educational_Practice_320_KamilEntities.Discipline.ToList().Where(x => x.Executor == DepartmentHeadInformationPage.dep.Id_department));
             this.DataContext = this;
 
             DepHeadDisciplineLv.ItemsSource = disciplines;
@@ -36,7 +36,7 @@ namespace KamilSafiullin320_EducationalPractice.Pages
 
         private void DisciplineBackBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new DepartmentHeadInformationPage());
         }
     }
 }

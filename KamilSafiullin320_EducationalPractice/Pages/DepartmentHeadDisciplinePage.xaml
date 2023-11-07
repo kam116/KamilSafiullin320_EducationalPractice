@@ -27,7 +27,8 @@
         <TextBlock x:Name="DepartmentNameTb"
                    Grid.Row="0"
                    Grid.Column="1"
-                   TextAlignment="Center"
+                   Grid.ColumnSpan="2"
+                   TextAlignment="Left"
                    VerticalAlignment="Center"
                    FontSize="20"
                    FontWeight="DemiBold"/>

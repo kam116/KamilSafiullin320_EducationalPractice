@@ -23,14 +23,14 @@ namespace KamilSafiullin320_EducationalPractice.Pages
     {
         public static List<Exam> exams { get; set; }
         public static List<Student> students { get; set; }
-        public TeacherStudentInteractionPage(Exam exam)
+        public TeacherStudentInteractionPage()
         {
             InitializeComponent();
 
-            DisciplineNameTb.Text = exam.Discipline.Name;
-            DisciplineDateTb.Text = exam.Date.ToString().Split(' ')[0];
+            DisciplineNameTb.Text = TeacherInformationPage.exam.Discipline.Name;
+            DisciplineDateTb.Text = TeacherInformationPage.exam.Date.ToString().Split(' ')[0];
 
-            exams = new List<Exam>(DbConnection.Educational_Practice_320_KamilEntities.Exam.ToList().Where(x => x.Date == exam.Date && x.Discipline == exam.Discipline));
+            exams = new List<Exam>(DbConnection.Educational_Practice_320_KamilEntities.Exam.ToList().Where(x => x.Date == TeacherInformationPage.exam.Date && x.Discipline == TeacherInformationPage.exam.Discipline));
             this.DataContext = this;
 
             students = new List<Student>(DbConnection.Educational_Practice_320_KamilEntities.Student.ToList());
@@ -53,16 +53,21 @@ namespace KamilSafiullin320_EducationalPractice.Pages
             }
             else
             {
-                Exam exam = new Exam();
-
-                //exam.Id_student = StudentRegNumberCb.SelectedItem;
+                Exam exam = new Exam
+                {
+                    Date = TeacherInformationPage.exam.Date,
+                    Id_employee = TeacherInformationPage.exam.Id_employee,
+                    Id_discipline = TeacherInformationPage.exam.Id_discipline,
+                    Audience = TeacherInformationPage.exam.Audience,
+                    Id_student = (StudentRegNumberCb.SelectedItem as Student).Id_student
+                };
 
                 DbConnection.Educational_Practice_320_KamilEntities.Exam.Add(exam);
                 DbConnection.Educational_Practice_320_KamilEntities.SaveChanges();
 
                 MessageBox.Show("Данные записаны!");
 
-                TeacherStudentInfoLv.ItemsSource = new List<Exam>(DbConnection.Educational_Practice_320_KamilEntities.Exam.ToList());
+                TeacherStudentInfoLv.ItemsSource = new List<Exam>(DbConnection.Educational_Practice_320_KamilEntities.Exam.ToList().Where(x => x.Date == TeacherInformationPage.exam.Date && x.Discipline == TeacherInformationPage.exam.Discipline));
 
                 StudentRegNumberCb.SelectedItem = null;
             }

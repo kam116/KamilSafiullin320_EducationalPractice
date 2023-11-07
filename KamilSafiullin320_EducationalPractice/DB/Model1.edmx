@@ -104,7 +104,7 @@
           <Key>
             <PropertyRef Name="Id_exam" />
           </Key>
-          <Property Name="Id_exam" Type="int" Nullable="false" />
+          <Property Name="Id_exam" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Date" Type="date" />
           <Property Name="Id_discipline" Type="int" />
           <Property Name="Id_student" Type="int" />
@@ -617,7 +617,7 @@
           <Key>
             <PropertyRef Name="Id_exam" />
           </Key>
-          <Property Name="Id_exam" Type="Int32" Nullable="false" />
+          <Property Name="Id_exam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="Id_discipline" Type="Int32" />
           <Property Name="Id_student" Type="Int32" />
@@ -863,7 +863,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
