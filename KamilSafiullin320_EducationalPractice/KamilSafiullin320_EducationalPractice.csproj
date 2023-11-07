@@ -168,7 +168,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\EngineerAddPage.xaml">
+    <Page Include="Pages\EngineerEmployeePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -199,8 +199,8 @@
     <Compile Include="Pages\DepartmentHeadInformationPage.xaml.cs">
       <DependentUpon>DepartmentHeadInformationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EngineerAddPage.xaml.cs">
-      <DependentUpon>EngineerAddPage.xaml</DependentUpon>
+    <Compile Include="Pages\EngineerEmployeePage.xaml.cs">
+      <DependentUpon>EngineerEmployeePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EngineerInformationPage.xaml.cs">
       <DependentUpon>EngineerInformationPage.xaml</DependentUpon>

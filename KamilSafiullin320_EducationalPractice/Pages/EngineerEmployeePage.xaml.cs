@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace KamilSafiullin320_EducationalPractice.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для EngineerAddPage.xaml
+    /// Логика взаимодействия для EngineerEmployeePage.xaml
     /// </summary>
-    public partial class EngineerAddPage : Page
+    public partial class EngineerEmployeePage : Page
     {
-        public EngineerAddPage()
+        public EngineerEmployeePage()
         {
             InitializeComponent();
         }

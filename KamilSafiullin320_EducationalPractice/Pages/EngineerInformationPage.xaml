@@ -39,7 +39,7 @@
                   Grid.Row="2"
                   Grid.RowSpan="3"
                   x:Name="EngineerInfoLv"
-                  ItemsSource="{Binding employees}">
+                  ItemsSource="{Binding employees}" SelectionChanged="EngineerInfoLv_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>

@@ -75,7 +75,19 @@ namespace KamilSafiullin320_EducationalPractice.Pages
 
         private void TeacherStudentDeleteBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (TeacherStudentInfoLv.SelectedItem != null)
+            {
+                DbConnection.Educational_Practice_320_KamilEntities.Exam.Remove(TeacherStudentInfoLv.SelectedItem as Exam);
+                DbConnection.Educational_Practice_320_KamilEntities.SaveChanges();
 
+                MessageBox.Show("Данные удалены!");
+
+                TeacherStudentInfoLv.ItemsSource = new List<Exam>(DbConnection.Educational_Practice_320_KamilEntities.Exam.ToList().Where(x => x.Date == TeacherInformationPage.exam.Date && x.Discipline == TeacherInformationPage.exam.Discipline));
+            }
+            else
+            {
+                MessageBox.Show("Выберите строку для удаления!");
+            }
         }
     }
 }

@@ -22,6 +22,7 @@ namespace KamilSafiullin320_EducationalPractice.Pages
     public partial class EngineerInformationPage : Page
     {
         public static List<Employee> employees { get; set; }
+        public static Employee emp { get; set; }
         public EngineerInformationPage()
         {
             InitializeComponent();
@@ -39,10 +40,10 @@ namespace KamilSafiullin320_EducationalPractice.Pages
             NavigationService.Navigate(new AuthorizationPage());
         }
 
-        private void EngineerAddBtn_Click(object sender, RoutedEventArgs e)
+        private void EngineerInfoLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MessageBox.Show("Вы переходите на страницу взаимодействия с сотрудниками!");
-            NavigationService.Navigate(new EngineerAddPage());
+            emp = EngineerInfoLv.SelectedItem as Employee;
+            NavigationService.Navigate(new EngineerEmployeePage());
         }
     }
 }
