@@ -22,6 +22,8 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <TextBlock x:Name="DisciplineNameTb"
@@ -66,6 +68,38 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <TextBlock Grid.Row="6"
+                   Text="Рег.№:"
+                   FontSize="20"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"/>
+        <ComboBox x:Name="StudentRegNumberCb"
+                  Grid.Column="1"
+                  Grid.Row="6"
+                  HorizontalAlignment="Center"
+                  HorizontalContentAlignment="Center"
+                  VerticalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  Height="35"
+                  Width="125"/>
+
+        <Button x:Name="TeacherStudentAddBtn"
+                Grid.Column="2"
+                Grid.Row="6"
+                Height="40"
+                Width="80"
+                Margin="0 0 120 0" Click="TeacherStudentAddBtn_Click">
+            <Image Height="30" Width="70" Source="/Resources/Add.png"/>
+        </Button>
+        <Button x:Name="TeacherStudentDeleteBtn"
+                Grid.Column="2"
+                Grid.Row="6"
+                Height="40"
+                Width="80"
+                Margin="120 0 0 0" Click="TeacherStudentDeleteBtn_Click">
+            <Image Height="30" Width="70" Source="/Resources/Delete.png"/>
+        </Button>
 
         <Button x:Name="TeacherStudentBackBtn"
                 Grid.Column="0"

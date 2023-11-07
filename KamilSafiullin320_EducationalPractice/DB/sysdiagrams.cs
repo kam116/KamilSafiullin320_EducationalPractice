@@ -12,18 +12,12 @@ namespace KamilSafiullin320_EducationalPractice.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Exam
+    public partial class sysdiagrams
     {
-        public int Id_exam { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> Id_discipline { get; set; }
-        public Nullable<int> Id_student { get; set; }
-        public Nullable<int> Id_employee { get; set; }
-        public string Audience { get; set; }
-        public Nullable<int> Grade { get; set; }
-    
-        public virtual Discipline Discipline { get; set; }
-        public virtual Employee Employee { get; set; }
-        public virtual Student Student { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

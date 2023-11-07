@@ -22,6 +22,7 @@ namespace KamilSafiullin320_EducationalPractice.Pages
     public partial class TeacherStudentInteractionPage : Page
     {
         public static List<Exam> exams { get; set; }
+        public static List<Student> students { get; set; }
         public TeacherStudentInteractionPage(Exam exam)
         {
             InitializeComponent();
@@ -32,12 +33,44 @@ namespace KamilSafiullin320_EducationalPractice.Pages
             exams = new List<Exam>(DbConnection.Educational_Practice_320_KamilEntities.Exam.ToList().Where(x => x.Date == exam.Date && x.Discipline == exam.Discipline));
             this.DataContext = this;
 
+            students = new List<Student>(DbConnection.Educational_Practice_320_KamilEntities.Student.ToList());
+            StudentRegNumberCb.ItemsSource = students;
+            StudentRegNumberCb.DisplayMemberPath = "Id_student";
+
             TeacherStudentInfoLv.ItemsSource = exams;
         }
 
         private void TeacherStudentBackBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new TeacherInformationPage());
+        }
+
+        private void TeacherStudentAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (StudentRegNumberCb.SelectedItem == null)
+            {
+                MessageBox.Show("Заполните все поля!");
+            }
+            else
+            {
+                Exam exam = new Exam();
+
+                //exam.Id_student = StudentRegNumberCb.SelectedItem;
+
+                DbConnection.Educational_Practice_320_KamilEntities.Exam.Add(exam);
+                DbConnection.Educational_Practice_320_KamilEntities.SaveChanges();
+
+                MessageBox.Show("Данные записаны!");
+
+                TeacherStudentInfoLv.ItemsSource = new List<Exam>(DbConnection.Educational_Practice_320_KamilEntities.Exam.ToList());
+
+                StudentRegNumberCb.SelectedItem = null;
+            }
+        }
+
+        private void TeacherStudentDeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

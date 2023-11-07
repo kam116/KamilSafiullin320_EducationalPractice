@@ -22,6 +22,7 @@ namespace KamilSafiullin320_EducationalPractice.Pages
     public partial class DepartmentHeadInformationPage : Page
     {
         public static List<Department> departments { get; set; }
+        public static Department dep { get; set; }
 
         public DepartmentHeadInformationPage()
         {
@@ -40,10 +41,15 @@ namespace KamilSafiullin320_EducationalPractice.Pages
             NavigationService.Navigate(new AuthorizationPage());
         }
 
+        private void DepartmentHeadInfoLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dep = DepartmentHeadInfoLv.SelectedItem as Department;
+            NavigationService.Navigate(new DepartmentHeadDisciplinePage());
+        }
+
         private void DepartmentHeadAddBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Вы переходите на страницу взаимодействия с дисциплинами!");
-            NavigationService.Navigate(new DepartmentHeadAddPage());
+
         }
     }
 }
