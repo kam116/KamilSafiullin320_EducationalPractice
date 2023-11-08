@@ -12,12 +12,9 @@ namespace KamilSafiullin320_EducationalPractice.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Teacher
+    public partial class Post
     {
-        public int Id_teacher { get; set; }
-        public string Rank { get; set; }
-        public string Degree { get; set; }
-    
-        public virtual Employee Employee { get; set; }
+        public int Id_post { get; set; }
+        public string Name { get; set; }
     }
 }

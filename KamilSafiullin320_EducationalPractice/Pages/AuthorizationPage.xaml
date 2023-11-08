@@ -84,5 +84,18 @@
                 VerticalAlignment="Center"
                 Width="115"
                 Height="45" Click="EntranceBtn_Click"/>
+
+        <Image x:Name="ImageQR"
+               Grid.Column="5"
+               Grid.Row="3"
+               Width="90"/>
+        <Button x:Name="QrAddBtn"
+                Grid.Column="5"
+                Grid.Row="4"
+                Content="Создать QR"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="90"
+                Height="30" Click="QrAddBtn_Click"/>
     </Grid>
 </Page>

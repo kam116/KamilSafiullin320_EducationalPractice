@@ -7,23 +7,24 @@
       <Diagram DiagramId="35f46bb2d44a47e7a523ee5b05dcac9b" Name="Diagram1">
         <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Academician" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Animal_SKamil" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Application" Width="1.5" PointX="7.5" PointY="13.875" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Control_SKamil" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Country" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Country_SKamil" Width="1.5" PointX="8.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Department" Width="1.5" PointX="3" PointY="7" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Department_head" Width="1.5" PointX="7.5" PointY="7.5" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Discipline" Width="1.5" PointX="5.25" PointY="13.125" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Employee" Width="1.5" PointX="5.25" PointY="5.625" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Engineer" Width="1.5" PointX="7.5" PointY="5.125" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Exam" Width="1.5" PointX="9.75" PointY="9" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Faculty" Width="1.5" PointX="0.75" PointY="7.375" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Flower_SKamil" Width="1.5" PointX="9.75" PointY="3.75" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Speciality" Width="1.5" PointX="5.25" PointY="10.125" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Student" Width="1.5" PointX="7.5" PointY="10.25" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Teacher" Width="1.5" PointX="3" PointY="4.25" />
-        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Ученики" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Application" Width="1.5" PointX="10.5" PointY="8.5" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Control_SKamil" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Country" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Country_SKamil" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Department" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Department_head" Width="1.5" PointX="7.5" PointY="11.125" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Discipline" Width="1.5" PointX="5.25" PointY="13.375" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Employee" Width="1.5" PointX="5.25" PointY="7.875" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Engineer" Width="1.5" PointX="7.5" PointY="6.25" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Exam" Width="1.5" PointX="12.75" PointY="8.125" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Faculty" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Flower_SKamil" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Post" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Speciality" Width="1.5" PointX="5.25" PointY="3.25" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Student" Width="1.5" PointX="7.5" PointY="3.375" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.sysdiagrams" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Teacher" Width="1.5" PointX="7.5" PointY="8.5" />
+        <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Ученики" Width="1.5" PointX="0.75" PointY="11.75" />
         <EntityTypeShape EntityType="Educational_practice_320_KamilModel.Гимназисты" Width="1.5" PointX="11.75" PointY="3.75" />
         <AssociationConnector Association="Educational_practice_320_KamilModel.FK_Application_Discipline" />
         <AssociationConnector Association="Educational_practice_320_KamilModel.FK_Application_Speciality" />
@@ -33,9 +34,9 @@
         <AssociationConnector Association="Educational_practice_320_KamilModel.FK_Speciality_Department" />
         <AssociationConnector Association="Educational_practice_320_KamilModel.FK_Department_head_Employee1" />
         <AssociationConnector Association="Educational_practice_320_KamilModel.FK_Exam_Discipline" />
-        <AssociationConnector Association="Educational_practice_320_KamilModel.FK_Employee_Teacher" />
         <AssociationConnector Association="Educational_practice_320_KamilModel.FK_Engineer_Employee1" />
         <AssociationConnector Association="Educational_practice_320_KamilModel.FK_Exam_Employee" />
+        <AssociationConnector Association="Educational_practice_320_KamilModel.FK_Teacher_Employee" />
         <AssociationConnector Association="Educational_practice_320_KamilModel.FK_Exam_Student" />
         <AssociationConnector Association="Educational_practice_320_KamilModel.FK_Student_Speciality" />
       </Diagram>

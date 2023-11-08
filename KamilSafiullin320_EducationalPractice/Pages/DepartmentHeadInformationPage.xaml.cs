@@ -22,6 +22,7 @@ namespace KamilSafiullin320_EducationalPractice.Pages
     public partial class DepartmentHeadInformationPage : Page
     {
         public static List<Department> departments { get; set; }
+        public static List<Faculty> faculties { get; set; }
         public static Department dep { get; set; }
 
         public DepartmentHeadInformationPage()
@@ -32,6 +33,10 @@ namespace KamilSafiullin320_EducationalPractice.Pages
 
             departments = new List<Department>(DbConnection.Educational_Practice_320_KamilEntities.Department.ToList());
             this.DataContext = this;
+
+            faculties = new List<Faculty>(DbConnection.Educational_Practice_320_KamilEntities.Faculty.ToList());
+            FacultyIdCb.ItemsSource = faculties;
+            FacultyIdCb.DisplayMemberPath = "Id_faculty";
 
             DepartmentHeadInfoLv.ItemsSource = departments;
         }
@@ -49,7 +54,47 @@ namespace KamilSafiullin320_EducationalPractice.Pages
 
         private void DepartmentHeadAddBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (DepartmentNameTb.Text == String.Empty || FacultyIdCb.SelectedItem == null)
+            {
+                MessageBox.Show("Заполните все поля!");
+            }
+            else if (departments.FirstOrDefault(x => x.Id_department.Trim() == GenerateCipher(DepartmentNameTb.Text).Trim())!= null)
+            {
+                MessageBox.Show("Шифр должен быть уникальным!");
+            }
+            else
+            {
+                Department department = new Department()
+                {
+                    Id_department = GenerateCipher(DepartmentNameTb.Text),
+                    Name = DepartmentNameTb.Text,
+                    Id_faculty = (FacultyIdCb.SelectedItem as Faculty).Id_faculty
+                };
 
+                DbConnection.Educational_Practice_320_KamilEntities.Department.Add(department);
+                DbConnection.Educational_Practice_320_KamilEntities.SaveChanges();
+
+                MessageBox.Show("Данные записаны!");
+
+                DepartmentHeadInfoLv.ItemsSource = new List<Department>(DbConnection.Educational_Practice_320_KamilEntities.Department.ToList());
+
+                DepartmentNameTb.Text = string.Empty;
+                FacultyIdCb.SelectedItem = null;
+            }
+        }
+
+        public static string GenerateCipher(string name)
+        {
+            string[] mass = name.Trim().Split(' ');
+            string cipher = "";
+            for (int i = 0; i < mass.Length; i++)
+            {
+                if (mass[i] != "")
+                {
+                    cipher += char.ToLower(mass[i][0]);
+                }
+            }
+            return cipher;
         }
     }
 }

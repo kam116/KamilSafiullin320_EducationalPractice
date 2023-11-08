@@ -127,6 +127,13 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Class" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="Id_post" />
+          </Key>
+          <Property Name="Id_post" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Speciality">
           <Key>
             <PropertyRef Name="Id_speciality" />
@@ -258,18 +265,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employee_Teacher">
-          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teacher">
-              <PropertyRef Name="Id_teacher" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="Id_chief" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Engineer_Employee1">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Engineer" Type="Self.Engineer" Multiplicity="0..1" />
@@ -342,6 +337,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Teacher_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id_employee" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="Id_teacher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище Educational_practice_320_KamilModelContainer">
           <EntitySet Name="Academician" EntityType="Self.Academician" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Animal_SKamil" EntityType="Self.Animal_SKamil" Schema="dbo" store:Type="Tables" />
@@ -357,6 +364,7 @@
           <EntitySet Name="Exam" EntityType="Self.Exam" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Flower_SKamil" EntityType="Self.Flower_SKamil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Speciality" EntityType="Self.Speciality" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -395,10 +403,6 @@
             <End Role="Department" EntitySet="Department" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_Teacher" Association="Self.FK_Employee_Teacher">
-            <End Role="Teacher" EntitySet="Teacher" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
           <AssociationSet Name="FK_Engineer_Employee1" Association="Self.FK_Engineer_Employee1">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Engineer" EntitySet="Engineer" />
@@ -423,6 +427,10 @@
             <End Role="Speciality" EntitySet="Speciality" />
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Employee" Association="Self.FK_Teacher_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -443,6 +451,7 @@
           <EntitySet Name="Exam" EntityType="Educational_practice_320_KamilModel.Exam" />
           <EntitySet Name="Faculty" EntityType="Educational_practice_320_KamilModel.Faculty" />
           <EntitySet Name="Flower_SKamil" EntityType="Educational_practice_320_KamilModel.Flower_SKamil" />
+          <EntitySet Name="Post" EntityType="Educational_practice_320_KamilModel.Post" />
           <EntitySet Name="Speciality" EntityType="Educational_practice_320_KamilModel.Speciality" />
           <EntitySet Name="Student" EntityType="Educational_practice_320_KamilModel.Student" />
           <EntitySet Name="sysdiagrams" EntityType="Educational_practice_320_KamilModel.sysdiagrams" />
@@ -481,10 +490,6 @@
             <End Role="Discipline" EntitySet="Discipline" />
             <End Role="Exam" EntitySet="Exam" />
           </AssociationSet>
-          <AssociationSet Name="FK_Employee_Teacher" Association="Educational_practice_320_KamilModel.FK_Employee_Teacher">
-            <End Role="Teacher" EntitySet="Teacher" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
           <AssociationSet Name="FK_Engineer_Employee1" Association="Educational_practice_320_KamilModel.FK_Engineer_Employee1">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Engineer" EntitySet="Engineer" />
@@ -492,6 +497,10 @@
           <AssociationSet Name="FK_Exam_Employee" Association="Educational_practice_320_KamilModel.FK_Exam_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Exam" EntitySet="Exam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Employee" Association="Educational_practice_320_KamilModel.FK_Teacher_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Teacher" EntitySet="Teacher" />
           </AssociationSet>
           <AssociationSet Name="FK_Exam_Student" Association="Educational_practice_320_KamilModel.FK_Exam_Student">
             <End Role="Student" EntitySet="Student" />
@@ -601,9 +610,9 @@
           <Property Name="Id_chief" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Department" Relationship="Educational_practice_320_KamilModel.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
           <NavigationProperty Name="Department_head" Relationship="Educational_practice_320_KamilModel.FK_Department_head_Employee1" FromRole="Employee" ToRole="Department_head" />
-          <NavigationProperty Name="Teacher" Relationship="Educational_practice_320_KamilModel.FK_Employee_Teacher" FromRole="Employee" ToRole="Teacher" />
           <NavigationProperty Name="Engineer" Relationship="Educational_practice_320_KamilModel.FK_Engineer_Employee1" FromRole="Employee" ToRole="Engineer" />
           <NavigationProperty Name="Exam" Relationship="Educational_practice_320_KamilModel.FK_Exam_Employee" FromRole="Employee" ToRole="Exam" />
+          <NavigationProperty Name="Teacher" Relationship="Educational_practice_320_KamilModel.FK_Teacher_Employee" FromRole="Employee" ToRole="Teacher" />
         </EntityType>
         <EntityType Name="Engineer">
           <Key>
@@ -644,6 +653,13 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="Id_post" />
+          </Key>
+          <Property Name="Id_post" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Speciality">
           <Key>
             <PropertyRef Name="Id_speciality" />
@@ -682,7 +698,7 @@
           <Property Name="Id_teacher" Type="Int32" Nullable="false" />
           <Property Name="Rank" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Degree" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Educational_practice_320_KamilModel.FK_Employee_Teacher" FromRole="Teacher" ToRole="Employee" />
+          <NavigationProperty Name="Employee" Relationship="Educational_practice_320_KamilModel.FK_Teacher_Employee" FromRole="Teacher" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Ученики">
           <Key>
@@ -803,18 +819,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Employee_Teacher">
-          <End Type="Educational_practice_320_KamilModel.Teacher" Role="Teacher" Multiplicity="1" />
-          <End Type="Educational_practice_320_KamilModel.Employee" Role="Employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Teacher">
-              <PropertyRef Name="Id_teacher" />
-            </Principal>
-            <Dependent Role="Employee">
-              <PropertyRef Name="Id_chief" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Engineer_Employee1">
           <End Type="Educational_practice_320_KamilModel.Employee" Role="Employee" Multiplicity="1" />
           <End Type="Educational_practice_320_KamilModel.Engineer" Role="Engineer" Multiplicity="0..1" />
@@ -836,6 +840,18 @@
             </Principal>
             <Dependent Role="Exam">
               <PropertyRef Name="Id_employee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Employee">
+          <End Type="Educational_practice_320_KamilModel.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="Educational_practice_320_KamilModel.Teacher" Role="Teacher" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id_employee" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="Id_teacher" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1002,6 +1018,14 @@
                 <ScalarProperty Name="Class" ColumnName="Class" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id_flower" ColumnName="Id_flower" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="Educational_practice_320_KamilModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id_post" ColumnName="Id_post" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

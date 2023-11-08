@@ -45,5 +45,10 @@ namespace KamilSafiullin320_EducationalPractice.Pages
             emp = EngineerInfoLv.SelectedItem as Employee;
             NavigationService.Navigate(new EngineerEmployeePage());
         }
+
+        private void EngineerAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EngineerAddPage());
+        }
     }
 }

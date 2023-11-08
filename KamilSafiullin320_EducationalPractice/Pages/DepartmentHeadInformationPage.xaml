@@ -23,6 +23,9 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <TextBlock x:Name="DepartmentHeadNameTb"
@@ -37,7 +40,7 @@
         <ListView Grid.Column="1"
                   Grid.ColumnSpan="2"
                   Grid.Row="2"
-                  Grid.RowSpan="3"
+                  Grid.RowSpan="4"
                   x:Name="DepartmentHeadInfoLv"
                   ItemsSource="{Binding departments}" SelectionChanged="DepartmentHeadInfoLv_SelectionChanged">
             <ListView.View>
@@ -68,6 +71,37 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <TextBlock Grid.Row="7"
+                   Text="Кафедра:"
+                   FontSize="20"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"/>
+        <TextBox x:Name="DepartmentNameTb"
+                 Grid.Column="1"
+                 Grid.Row="7"
+                 HorizontalAlignment="Center"
+                 HorizontalContentAlignment="Center"
+                 VerticalAlignment="Center"
+                 VerticalContentAlignment="Center"
+                 Width="150"
+                 Height="35"/>
+
+        <TextBlock Grid.Column="2"
+                   Grid.Row="7"
+                   Text="Факультет:"
+                   FontSize="20"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"/>
+        <ComboBox x:Name="FacultyIdCb"
+                  Grid.Column="3"
+                  Grid.Row="7"
+                  HorizontalAlignment="Center"
+                  HorizontalContentAlignment="Center"
+                  VerticalAlignment="Center"
+                  VerticalContentAlignment="Center"
+                  Width="150"
+                  Height="35"/>
 
         <Button x:Name="DepartmentHeadBackBtn"
                 Grid.Column="0"

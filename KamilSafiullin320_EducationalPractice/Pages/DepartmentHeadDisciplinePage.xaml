@@ -22,6 +22,8 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <TextBlock x:Name="DepartmentNameTb"
@@ -81,6 +83,38 @@
                 Height="45"
                 Width="125" Click="DisciplineBackBtn_Click">
             <Image Height="35" Width="75" Source="/Resources/Back.png"/>
+        </Button>
+
+        <Button x:Name="DepHeadDisciplineAddBtn"
+                Grid.Column="1"
+                Grid.Row="6"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="70"
+                Height="35"
+                Margin="0 0 165 0" Click="DepHeadDisciplineAddBtn_Click">
+            <Image Height="30" Width="60" Source="/Resources/Add.png"/>
+        </Button>
+
+        <Button x:Name="DepHeadDisciplineDeleteBtn"
+                Grid.Column="1"
+                Grid.Row="6"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="70"
+                Height="35" Click="DepHeadDisciplineDeleteBtn_Click">
+            <Image Height="30" Width="60" Source="/Resources/Delete.png"/>
+        </Button>
+
+        <Button x:Name="DepHeadDisciplineChangeBtn"
+                Grid.Column="1"
+                Grid.Row="6"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="70"
+                Height="35"
+                Margin="165 0 0 0" Click="DepHeadDisciplineChangeBtn_Click">
+            <Image Height="30" Width="60" Source="/Resources/Change.png"/>
         </Button>
     </Grid>
 </Page>
